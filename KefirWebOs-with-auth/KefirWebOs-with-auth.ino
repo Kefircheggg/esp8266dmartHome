@@ -112,6 +112,7 @@ String Wifi_Modal()
 
     web += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/> <meta charset=\"utf-8\"><title>KefirWebOs Wifi Settings</title>";
     web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>";
+    web += "";
     web += "<style>";
     web += "body{background-image: url(https://i.imgur.com/N68DFWn.jpg); background-repeat: no-repeat; background-position: center center;background-attachment: fixed;background-size: cover;}";
     web += ".container1{margin:1px; height:20px;background-color:#f8f9fa;border:1px solid #f8f9fa;border-radius:5px 5px 5px 5px;}";
@@ -121,15 +122,15 @@ String Wifi_Modal()
     web += "</style>";
     web += "</Head>";
 
-    web += "<body>";
-    web += "<div class=\"container-fluid container1\"><span class=\"titlepage\">KefirWebOS</span></div>";
-    web +="<div  class=\"modal fade\"><div class=\"modal-dialog\"> <div class=\"modal-content\">";
-    web +="<div class=\"modal-header\"><h4 class=\"modal-title\">Настройки Wi-fi</h4></div>";
-    web +="<div class=\"modal-body\"> </div>";
-    web +="<div class=\"modal-footer\">";
-    web +="<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Закрыть</button><button type=\"button\" class=\"btn btn-primary\">Сохранить изменения</button></div></div></div></div>";
+    web +="<body>";
+    web +="<div class=\"container-fluid container1\"><span class=\"titlepage\">KefirWebOS</span></div>";
     web +="";
-    web += "</body>";
+    web +="";
+    web +="";
+    web +="";
+    web +="";
+    web +="";
+    web +="</body>";
   return(web);
 }
 
