@@ -112,7 +112,8 @@ String Wifi_Modal()
 
     web += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/> <meta charset=\"utf-8\"><title>KefirWebOs Wifi Settings</title>";
     web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>";
-    web += "";
+    web += "<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>";
+    web += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>";
     web += "<style>";
     web += "body{background-image: url(https://i.imgur.com/N68DFWn.jpg); background-repeat: no-repeat; background-position: center center;background-attachment: fixed;background-size: cover;}";
     web += ".container1{margin:1px; height:20px;background-color:#f8f9fa;border:1px solid #f8f9fa;border-radius:5px 5px 5px 5px;}";
@@ -124,12 +125,12 @@ String Wifi_Modal()
 
     web +="<body>";
     web +="<div class=\"container-fluid container1\"><span class=\"titlepage\">KefirWebOS</span></div>";
-    web +="";
-    web +="";
-    web +="";
-    web +="";
-    web +="";
-    web +="";
+    web +="<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"myModal\" data-target=\"#myModal\">Launch demo modal</button>";
+    web +="<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\"> <div class=\"modal-dialog\" role=\"document\">";
+    web +="<div class=\"modal-content\"><div class=\"modal-header\"><h4 class=\"modal-title\" id=\"myModalLabel\">Wifi Settings</h4></div>";
+    web +="<div class=\"modal-body\"></div>";
+    web +="<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\">Save changes</button>";
+    web +="</div></div></div></div>";
     web +="</body>";
   return(web);
 }
@@ -143,7 +144,8 @@ String MainPage()
   byte Temp = dht.readTemperature();
   String web; 
   web += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/> <meta charset=\"utf-8\"><title>KefirWebOs</title>";
-  
+  web += "<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>";
+  web += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>";
   web += "<style>";
   web += "body{background-image: url(https://i.imgur.com/N68DFWn.jpg); background-repeat: no-repeat; background-position: center center;background-attachment: fixed;background-size: cover;}";
   web += ".container1{margin:1px; height:20px;background-color:#f8f9fa;border:1px solid #f8f9fa;border-radius:5px 5px 5px 5px;}";
@@ -159,17 +161,16 @@ String MainPage()
   web += "<body>";
   web += "<div class=\"container-fluid container1\">";
   web += "<span class=\"titlepage\">KefirWebOS</span>";
-  web += "<a href=\"WifiModal\"><button><span class=\"glyphicon glyphicon-signal InContainerIcon\" aria-hidden=\"true\"></span></button></a>";
+  web += "<button data-toggle=\"modal\" data-target=\"#myModal\"><span class=\"glyphicon glyphicon-signal InContainerIcon\" aria-hidden=\"true\"></span></button>";
   web += "";
   web +="</div>";
 
     //++++++++++ Modal ++++++++++++++
-  web +="<div href=\"\" class=\"modal fade\"><div class=\"modal-dialog\"> <div class=\"modal-content\">";
-  web +="<div class=\"modal-header\"><h4 class=\"modal-title\">Настройки Wi-fi</h4></div>";
-  web +="<div class=\"modal-body\"> </div>";
-  web +="<div class=\"modal-footer\">";
-  web +="<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Закрыть</button><button type=\"button\" class=\"btn btn-primary\">Сохранить изменения</button></div></div></div></div>";
-  web +="";
+  web +="<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\"> <div class=\"modal-dialog\" role=\"document\">";
+  web +="<div class=\"modal-content\"><div class=\"modal-header\"><h4 class=\"modal-title\" id=\"myModalLabel\">Wifi Settings</h4></div>";
+  web +="<div class=\"modal-body\"></div>";
+  web +="<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\">Save changes</button>";
+  web +="</div></div></div></div>";
     //++++++++++ Modal ++++++++++++++
 
     //++++++++++ LED-3  +++++++++++++
