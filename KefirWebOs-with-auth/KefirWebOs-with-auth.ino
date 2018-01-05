@@ -76,13 +76,6 @@ void setup(void){
   });
   server.begin();
 
-   //+++++++++++++++++++++++ WifiModal start ++++++++++++++++++++ 
-  server.on("/WifiModal", [](){
-    
-    server.send(200, "text/html", Wifi_Modal());
-    delay(100);    
-  });
-   //+++++++++++++++++++++++ WifiModal End ++++++++++++++++++++ 
   
   server.on("/socket4On", [](){
     digitalWrite(D3, HIGH);
@@ -106,38 +99,6 @@ void loop(void){
   ArduinoOTA.handle();
 } 
 
-String Wifi_Modal() 
-{
-  String web;
-
-    web += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/> <meta charset=\"utf-8\"><title>KefirWebOs Wifi Settings</title>";
-    web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>";
-    web += "<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>";
-    web += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>";
-    web += "<style>";
-    web += "body{background-image: url(https://i.imgur.com/N68DFWn.jpg); background-repeat: no-repeat; background-position: center center;background-attachment: fixed;background-size: cover;}";
-    web += ".container1{margin:1px; height:20px;background-color:#f8f9fa;border:1px solid #f8f9fa;border-radius:5px 5px 5px 5px;}";
-    web += ".titlepage{font-size:15px;font-weight: bold}";
-    web += "";
-    web += "";
-    web += "</style>";
-    web += "</Head>";
-
-    web +="<body>";
-    web +="<div class=\"container-fluid container1\"><span class=\"titlepage\">KefirWebOS</span></div>";
-    web +="<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"myModal\" data-target=\"#myModal\">Launch demo modal</button>";
-    web +="<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\"> <div class=\"modal-dialog\" role=\"document\">";
-    web +="<div class=\"modal-content\"><div class=\"modal-header\"><h4 class=\"modal-title\" id=\"myModalLabel\">Wifi Settings</h4></div>";
-    web +="<div class=\"modal-body\"></div>";
-    web +="<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\">Save changes</button>";
-    web +="</div></div></div></div>";
-    web +="</body>";
-  return(web);
-}
-
-
-
-
 String MainPage()
 {
   
@@ -145,49 +106,60 @@ String MainPage()
   String web; 
   web += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/> <meta charset=\"utf-8\"><title>KefirWebOs</title>";
   web += "<script src=\"https://code.jquery.com/jquery-3.2.1.min.js\"></script>";
-  web += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>";
+  web += "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js\"></script>";
   web += "<style>";
   web += "body{background-image: url(https://i.imgur.com/N68DFWn.jpg); background-repeat: no-repeat; background-position: center center;background-attachment: fixed;background-size: cover;}";
   web += ".container1{margin:1px; height:20px;background-color:#f8f9fa;border:1px solid #f8f9fa;border-radius:5px 5px 5px 5px;}";
-  web += ".buttinteface{margin-left:50px; margin-top:50px; }";
-  web += ".glyphinterface{font-size:50pt;}";
+  web += ".buttinteface{margin-left:50px; margin-top:50px;}";
   web += ".titlepage{font-size:15px;font-weight: bold}";
   web += ".InContainerIcon{float:right;}";
+  web += "";
   web += "</style>";
-  web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>";
+  web += "<link href=\"https://use.fontawesome.com/releases/v5.0.2/css/all.css\" rel=\"stylesheet\">";
+  web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css'>";
   web += "</head>";
 
 
   web += "<body>";
   web += "<div class=\"container-fluid container1\">";
   web += "<span class=\"titlepage\">KefirWebOS</span>";
-  web += "<button data-toggle=\"modal\" data-target=\"#myModal\"><span class=\"glyphicon glyphicon-signal InContainerIcon\" aria-hidden=\"true\"></span></button>";
+  web += "<i class=\"fas fa-signal InContainerIcon\"></i>";
   web += "";
   web +="</div>";
 
     //++++++++++ Modal ++++++++++++++
   web +="<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\"> <div class=\"modal-dialog\" role=\"document\">";
   web +="<div class=\"modal-content\"><div class=\"modal-header\"><h4 class=\"modal-title\" id=\"myModalLabel\">Wifi Settings</h4></div>";
-  web +="<div class=\"modal-body\"></div>";
+  web +="<div class=\"modal-body\">";
+  web +="<p>SSID:"+String(ssid)+"</p>";
+  web +="";
+  web +="";
+  web +="</div>";
   web +="<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button><button type=\"button\" class=\"btn btn-primary\">Save changes</button>";
   web +="</div></div></div></div>";
     //++++++++++ Modal ++++++++++++++
 
     //++++++++++ LED-3  +++++++++++++
   if(digitalRead(D3) == LOW) {
-  web += "<a href=\"socket4On\"><button  type=\"button\" class=\"btn btn-danger btn-lg buttinteface\"><span class=\"glyphicon glyphicon glyphicon-lamp glyphinterface\"aria-hidden=\"true\"></span></button></a>";
+  web += "<a href=\"socket4On\"><button style=\"padding:8px 20.5px 8px 20.5px\" type=\"button\" class=\"btn btn-danger btn-lg buttinteface\"><i class=\"far fa-lightbulb fa-5x\"></i></button></a>";
     }
    if(digitalRead(D3) == HIGH) {
-  web += "<a href=\"socket4Off\"><button  type=\"button\" class=\"btn btn-success btn-lg buttinteface\"><span class=\"glyphicon glyphicon glyphicon-lamp glyphinterface\"aria-hidden=\"true\"></span></button></a>";   
+  web += "<a href=\"socket4Off\"><button style=\"padding:8px 20.5px 8px 20.5px\" type=\"button\" class=\"btn btn-success btn-lg buttinteface\"><i class=\"fas fa-lightbulb fa-5x\"></i></button></a>";   
       }
   // ++++++++ LED-3 +++++++++++++
 
   // ++++++++ Refresh +++++++++++
-  web += "<a href=\"/\"><button  type=\"button\"  class=\"btn btn-info buttinteface\" aria-label=\"Center Align\">";
-  web += "<span class=\"glyphicon glyphicon-refresh glyphinterface\" aria-hidden=\"true\"></span>";
+  web += "<a href=\"/\"><button style=\"padding:18px\" type=\"button\"  class=\"btn btn-info buttinteface\" aria-label=\"Center Align\">";
+  web += "<i class=\"fas fa-sync-alt fa-5x\"></i>";
   web += "</button></a>";
   // ++++++++ Refresh +++++++++++
-  //glyphicon glyphicon-signal
+
+  //+++++++++ Modal ++++++++++++++
+  web += "<button type=\"button\" style=\"padding:18px 8px\" class=\"btn btn-primary buttinteface\" aria-label=\"Center Align\" data-toggle=\"modal\" data-target=\"#myModal\">";
+  web += "<i class=\"fas fa-wifi fa-5x\"></i>";
+  web += "</button>";
+  //+++++++++ Modal ++++++++++++++  
+
   web += "</body>";
   return(web);
 
