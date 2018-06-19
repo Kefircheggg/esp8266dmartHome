@@ -116,7 +116,7 @@ String MainPage()
   web += "";
   web += "</style>";
   web += "<link href=\"https://use.fontawesome.com/releases/v5.0.2/css/all.css\" rel=\"stylesheet\">";
-  web += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css'>";
+  web += "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>";
   web += "</head>";
 
 
